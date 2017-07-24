@@ -10,17 +10,15 @@
 #define Common_h
 
 
-#define KAPPID @"1187830870"
-#define KUmengAPPKey @"58be1313c62dca0799000e91"
-#define KWeChatAPPKey @"wx228753d43892e25c" //(李财神)
-#define KWeChatAPPSecret @"ae5a2bf83ec1c7405284c3940d0ddaab" //(李财神)
-//#define KQQAPPKey @"1106026224" //(李财神)
-//#define KQQAPPSecret @"p79O2DEUUlapb1vN" //(李财神)
-#define KQQAPPKey @"1106056074" //(李财神)
-#define KQQAPPSecret @"cGpQiU93L8fkZ8m6" //(李财神)
-#define KSinaAPPKey @"538526840" //(李财神)
-#define KSinaAPPSecret @"0269ac1de06bab59351ee897c154ca93" //(李财神)
-#define ALIPID @"2016071501622641" //(支付宝PID)
+#define KUmengAPPKey @"XXXXXXXXXXXXXX"
+#define KWeChatAPPKey @"XXXXXXXXXXXXXX" //(微信)
+#define KWeChatAPPSecret @"XXXXXXXXXXXXXX" //(微信)
+
+#define KQQAPPKey @"XXXXXXXXXXXXXX" //(QQ)
+#define KQQAPPSecret @"XXXXXXXXXXXXXX" //(QQ)
+#define KSinaAPPKey @"XXXXXXXXXXXXXX" //(新浪)
+#define KSinaAPPSecret @"XXXXXXXXXXXXXX" //(新浪)
+#define ALIPID @"XXXXXXXXXXXXXX" //(支付宝PID)
 
 
 #define SCREEN_WIDTH        [UIScreen mainScreen].bounds.size.width
