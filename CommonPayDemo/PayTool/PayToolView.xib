@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="PayToolView" id="iN0-l3-epB" customClass="PayToolView">
+            <rect key="frame" x="0.0" y="0.0" width="269" height="473"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ZO-yC-dOn">
+                    <rect key="frame" x="0.0" y="172" width="269" height="301"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="sym-Tz-Z4D">
+                            <rect key="frame" x="0.0" y="0.0" width="269" height="301"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="301" id="MAn-3y-CDZ"/>
+                        <constraint firstAttribute="bottom" secondItem="sym-Tz-Z4D" secondAttribute="bottom" id="ZV5-Sb-zlO"/>
+                        <constraint firstAttribute="trailing" secondItem="sym-Tz-Z4D" secondAttribute="trailing" id="dHy-gK-Xoc"/>
+                        <constraint firstItem="sym-Tz-Z4D" firstAttribute="leading" secondItem="2ZO-yC-dOn" secondAttribute="leading" id="oxg-1x-YOK"/>
+                        <constraint firstItem="sym-Tz-Z4D" firstAttribute="top" secondItem="2ZO-yC-dOn" secondAttribute="top" id="t3q-EM-lPO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="0.50522629310344824" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2ZO-yC-dOn" secondAttribute="trailing" id="4xO-jX-1qo"/>
+                <constraint firstAttribute="bottom" secondItem="2ZO-yC-dOn" secondAttribute="bottom" id="gAM-aM-qKO"/>
+                <constraint firstItem="2ZO-yC-dOn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xVN-Cc-d9P"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="tableView" destination="sym-Tz-Z4D" id="fhG-yL-C2H"/>
+                <outlet property="tableViewHeight" destination="MAn-3y-CDZ" id="2Q0-8u-ZwN"/>
+            </connections>
+            <point key="canvasLocation" x="-27.5" y="149.5"/>
+        </view>
+    </objects>
+</document>
