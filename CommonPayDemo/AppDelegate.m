@@ -8,7 +8,10 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-@interface AppDelegate ()
+#import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "AppDelegate+UPPayment.h"
+@interface AppDelegate ()<WXApiDelegate>
 
 @end
 
@@ -20,7 +23,58 @@
     self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     self.window.rootViewController = [[ViewController alloc] init];
+    
+    
+    //支付
+    [WXApi registerApp:KWeChatAPPKey withDescription:@"微信支付"];
     return YES;
+}
+
+#pragma mark --支付回调
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    NSLog(@"%@",url);
+    //处理支付宝支付结果
+    if ([url.host isEqualToString:@"safepay"]) {
+        
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            [[NSNotificationCenter defaultCenter] postNotificationName:ALIPayResult object:resultDic];
+        }];
+    }else if ([url.host isEqualToString:@"pay"]) {
+        // 处理微信的支付结果
+        [WXApi handleOpenURL:url delegate:self];
+    }else if ([url.host isEqualToString:@"uppayresult"]) {
+        NSString *result = [AppDelegate setupUPPaymentResultWithUrl:url];
+        NSLog(@"%@",result);
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPPaymentResult object:[NSDictionary dictionaryWithObject:result forKey:@"result"]];
+    }
+    return YES;
+}
+
+
+-(void) onResp:(BaseResp*)resp
+{
+    //启动微信支付的response
+    NSString *payResoult = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    if([resp isKindOfClass:[PayReq class]]){
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+        switch (resp.errCode) {
+            case 0:
+                payResoult = @"支付结果：成功！";
+                break;
+            case -1:
+                payResoult = @"支付结果：失败！";
+                break;
+            case -2:
+                payResoult = @"用户已经退出支付！";
+                break;
+            default:
+                payResoult = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                break;
+        }
+        
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:WeChatPaidSuccess object:[NSDictionary dictionaryWithObject:@(resp.errCode) forKey:@"result"]];
 }
 
 

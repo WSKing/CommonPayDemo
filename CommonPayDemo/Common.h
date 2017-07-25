@@ -21,6 +21,12 @@
 #define ALIPID @"XXXXXXXXXXXXXX" //(支付宝PID)
 
 
+//----------------------通知----------------------------
+#define WeChatPaidSuccess   @"WeChatPaidSuccess"
+#define UPPaymentResult     @"UPPaymentResult"
+#define ALIPayResult        @"ALIPayResult"
+
+
 #define SCREEN_WIDTH        [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT       [UIScreen mainScreen].bounds.size.height
 #define STATUS_BAR_HIGHT    (20)
